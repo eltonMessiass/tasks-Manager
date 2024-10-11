@@ -7,7 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
+@RequestMapping("/api")
 public class TaskController {
 
     @Autowired
@@ -25,5 +28,9 @@ public class TaskController {
         return new ResponseEntity<>(taskService.getTask(id), HttpStatus.OK);
     }
 
+    @GetMapping("/tasks")
+    public ResponseEntity<List<Task>> getTasks() {
+        return new ResponseEntity<>(taskService.getTasks(), HttpStatus.OK);
+    }
 
 }
